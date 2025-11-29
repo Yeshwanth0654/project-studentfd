@@ -3,7 +3,8 @@ import { initializeDefaultData, storageUtils, generateId } from '../utils/data.j
 
 // Initial state
 const initialState = {
-  user: null, // { id, name, role: 'admin' | 'student' }
+  user: null, // { id, name, email, role: 'admin' | 'student' }
+  users: [], // Array of registered users
   courses: [],
   instructors: [],
   feedbackForms: [],
@@ -18,6 +19,8 @@ const actionTypes = {
   SET_LOADING: 'SET_LOADING',
   SET_ERROR: 'SET_ERROR',
   SET_USER: 'SET_USER',
+  LOAD_USERS: 'LOAD_USERS',
+  REGISTER_USER: 'REGISTER_USER',
   LOAD_DATA: 'LOAD_DATA',
   ADD_FEEDBACK_FORM: 'ADD_FEEDBACK_FORM',
   UPDATE_FEEDBACK_FORM: 'UPDATE_FEEDBACK_FORM',
@@ -43,7 +46,15 @@ const feedbackReducer = (state, action) => {
     
     case actionTypes.SET_USER:
       return { ...state, user: action.payload };
-    
+
+    case actionTypes.LOAD_USERS:
+      return { ...state, users: action.payload };
+
+    case actionTypes.REGISTER_USER:
+      const updatedUsers = [...state.users, action.payload];
+      storageUtils.saveToStorage('users', updatedUsers);
+      return { ...state, users: updatedUsers };
+
     case actionTypes.LOAD_DATA:
       return {
         ...state,
@@ -129,6 +140,7 @@ export const FeedbackProvider = ({ children }) => {
   useEffect(() => {
     initializeDefaultData();
     loadData();
+    actions.loadUsers();
   }, []);
 
   // Action creators
@@ -138,7 +150,27 @@ export const FeedbackProvider = ({ children }) => {
     setError: (error) => dispatch({ type: actionTypes.SET_ERROR, payload: error }),
     
     setUser: (user) => dispatch({ type: actionTypes.SET_USER, payload: user }),
-    
+
+    loadUsers: () => {
+      try {
+        const users = storageUtils.loadFromStorage('users', []);
+        dispatch({ type: actionTypes.LOAD_USERS, payload: users });
+      } catch (error) {
+        dispatch({ type: actionTypes.SET_ERROR, payload: 'Failed to load users' });
+      }
+    },
+
+    login: async (email, password, role) => {
+      const users = storageUtils.loadFromStorage('users', []);
+      const user = users.find(u => u.email === email && u.password === password && u.role === role);
+
+      if (!user) {
+        throw new Error('Invalid credentials');
+      }
+
+      return user;
+    },
+
     loadData: () => {
       try {
         const courses = storageUtils.loadFromStorage('courses', []);

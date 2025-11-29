@@ -56,11 +56,11 @@ const Reg = () => {
           <span style={{ color: 'hsl(218, 81%, 75%)' }}>for your business</span>
         </h1>
         <p className="mb-4 opacity-70" style={{ color: 'hsl(218, 81%, 85%)' }}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Temporibus, expedita iusto veniam atque, magni tempora mollitia
-          dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-          ab ipsum nisi dolorem modi. Quos?
-        </p>
+  Create your account in just a few steps and get instant access to our
+  business tools and resources. Register today to manage your services,
+  track your progress, and stay connected with our latest updates — all
+  from one secure dashboard.
+</p>
       </div>
 
       <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
@@ -105,25 +105,6 @@ const Reg = () => {
               <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-4">
                 Sign up
               </button>
-
-              <div className="text-center">
-                <p>or sign up with:</p>
-                <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-link btn-floating mx-1">
-                  <i className="fab fa-facebook-f"></i>
-                </button>
-
-                <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-link btn-floating mx-1">
-                  <i className="fab fa-google"></i>
-                </button>
-
-                <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-link btn-floating mx-1">
-                  <i className="fab fa-twitter"></i>
-                </button>
-
-                <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-link btn-floating mx-1">
-                  <i className="fab fa-github"></i>
-                </button>
-              </div>
             </form>
           </div>
         </div>

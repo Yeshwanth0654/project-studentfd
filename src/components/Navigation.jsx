@@ -23,6 +23,9 @@ const Navigation = () => {
             <Link to="/login" className={`nav-link ${isActive('/login') ? 'active' : ''}`}>
               Login
             </Link>
+            <Link to="/register" className={`nav-link ${isActive('/register') ? 'active' : ''}`}>
+              Register
+            </Link>
           </div>
         </div>
       </nav>

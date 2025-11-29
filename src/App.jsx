@@ -4,6 +4,7 @@ import { FeedbackProvider, useFeedback } from './context/FeedbackContext';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import Login from './components/Login';
+import Reg from './components/Reg';
 
 // Admin Components
 import AdminDashboard from './components/admin/AdminDashboard';
@@ -42,6 +43,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Reg />} />
           
           {/* Admin Routes */}
           <Route 

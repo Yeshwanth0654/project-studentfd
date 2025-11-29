@@ -19,6 +19,31 @@ export const sampleInstructors = [
   { id: '4', name: 'Prof. Brown', department: 'Chemistry', email: 'brown@university.edu' }
 ];
 
+// Sample users data (for demo purposes)
+export const sampleUsers = [
+  {
+    id: '1',
+    name: 'Admin User',
+    email: 'admin@university.edu',
+    password: 'admin123',
+    role: 'admin'
+  },
+  {
+    id: '2',
+    name: 'John Doe',
+    email: 'john.doe@student.edu',
+    password: 'student123',
+    role: 'student'
+  },
+  {
+    id: '3',
+    name: 'Jane Smith',
+    email: 'jane.smith@student.edu',
+    password: 'student123',
+    role: 'student'
+  }
+];
+
 // Question types for feedback forms
 export const questionTypes = {
   RATING: 'rating',
@@ -224,6 +249,11 @@ export const initializeDefaultData = () => {
   // Initialize instructors if not present
   if (!storageUtils.loadFromStorage('instructors')) {
     storageUtils.saveToStorage('instructors', sampleInstructors);
+  }
+
+  // Initialize users if not present
+  if (!storageUtils.loadFromStorage('users')) {
+    storageUtils.saveToStorage('users', sampleUsers);
   }
 
   // Initialize feedback forms if not present

@@ -82,15 +82,6 @@ const Home = () => {
             </ul>
           </div>
           
-          <div className="feature-card">
-            <h3>📊 Advanced Analytics</h3>
-            <p>Gain insights from student feedback data</p>
-            <ul>
-              <li>Rating averages and distributions</li>
-              <li>Text response analysis</li>
-              <li>Trend tracking over time</li>
-            </ul>
-          </div>
         </div>
         
         <div className="cta-section">
