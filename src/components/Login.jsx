@@ -7,7 +7,8 @@ const Login = () => {
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
-    role: 'student'
+    role: 'student',
+    adminCode: ''
   });
 
   // If user is already logged in, redirect to appropriate dashboard
@@ -27,7 +28,7 @@ const Login = () => {
     e.preventDefault();
     if (loginData.email.trim() && loginData.password.trim()) {
       try {
-        const user = await login(loginData.email, loginData.password, loginData.role);
+        const user = await login(loginData.email, loginData.password, loginData.role, loginData.adminCode);
         setUser(user);
       } catch (error) {
         alert(error.message);
@@ -79,6 +80,21 @@ const Login = () => {
             </select>
           </div>
 
+          {loginData.role === 'admin' && (
+            <div className="form-group">
+              <label htmlFor="adminCode">Admin Verification Code:</label>
+              <input
+                type="password"
+                id="adminCode"
+                name="adminCode"
+                value={loginData.adminCode}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter admin verification code"
+              />
+            </div>
+          )}
+
           <button type="submit" className="login-btn">
             Login
           </button>
@@ -92,6 +108,7 @@ const Login = () => {
           <p><strong>Demo Instructions:</strong></p>
           <p>• Select "Student" to access feedback forms and view results</p>
           <p>• Select "Administrator/Teacher" to create forms and view analytics</p>
+          <p>• Admin login requires verification code: "ADMIN2024"</p>
         </div>
       </div>
     </div>

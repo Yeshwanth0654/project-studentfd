@@ -23,9 +23,6 @@ const Navigation = () => {
             <Link to="/login" className={`nav-link ${isActive('/login') ? 'active' : ''}`}>
               Login
             </Link>
-            <Link to="/register" className={`nav-link ${isActive('/register') ? 'active' : ''}`}>
-              Register
-            </Link>
           </div>
         </div>
       </nav>
@@ -53,6 +50,9 @@ const Navigation = () => {
               </Link>
               <Link to="/admin/courses" className={`nav-link ${isActive('/admin/courses') ? 'active' : ''}`}>
                 Courses
+              </Link>
+              <Link to="/admin/users" className={`nav-link ${isActive('/admin/users') ? 'active' : ''}`}>
+                Manage Users
               </Link>
             </>
           )}
